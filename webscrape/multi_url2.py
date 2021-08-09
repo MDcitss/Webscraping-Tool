@@ -5,9 +5,13 @@ import os
 false_urls = 0
 # Start in the file where all the info will go
 origin = "/Users/maxdi/source/webscraper-inital/allRevs"
+#Bellow will be the origin that is used when running on different machines
+##origin = os.getcwd()
 # For the compete website scrape between 50,000 and 90,000
 for num in range(10,99):
+    #Return to original directory
     os.chdir(origin)
+    #810 in the id is only temporarily being used for the simulation
     id = "810" + str(num)
     goodStr = ""
     similarStr = ""
@@ -22,13 +26,12 @@ for num in range(10,99):
     
     fullHTML = BeautifulSoup(page.content,"html.parser")
 
-
     errors = fullHTML.find_all("div", class_="messages")
     erStr = str(errors)
     if "We couldn't find the story" in erStr:
         false_urls +=1
         continue
-
+    #make a new directory for each review and move to that directory 
     os.mkdir(id)
     os.chdir(id)
     # using class tag -> potentially usefull for tags, but not getting if it is "what was good?", "what was bad?", ect.
