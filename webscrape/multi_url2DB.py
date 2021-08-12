@@ -3,6 +3,12 @@ from bs4 import BeautifulSoup
 import os
 import sqlite3
 
+def create_review(conn, review):
+    sql = ''' INSERT INTO Review(id,story,timePosted,goodTag,similarTag,improvedTag,responseTag,feelTag,locationTag) VALUES(?,?,?,?,?,?,?,?,?)'''
+    cur = conn.cursor()
+    cur.execute(sql, review)
+    conn.commit()
+
 conn = sqlite3.connect('test.db')
 try:
     conn.execute('''CREATE TABLE Story
