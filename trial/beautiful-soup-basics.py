@@ -5,7 +5,7 @@ URL = "https://www.careopinion.org.au/82747"
 page = requests.get(URL)
 
 fullHTML = BeautifulSoup(page.content,"html.parser")
-
+ 
 # using id tag -> usefull for the review section
 review = fullHTML.find(id="opinion_body")
 print(review.text)
