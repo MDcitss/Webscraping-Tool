@@ -157,11 +157,11 @@ def main():
         locations.close()
         #Add all this to the sql
         rev = (id,review.text.encode,timeSub,goodStr,similarStr,improvedStr,responseStr,feelStr,locationStr)
-
+        create_review(conn,rev)
         #SELECT id From Review WHERE goodTag LIKE '%word1%'
     print(false_urls)
     # select_all_tasks(conn)
-    select_all_tags(conn,"goodTag","nurse")
+    # select_all_tags(conn,"goodTag","nurse")
 
 
 
